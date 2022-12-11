@@ -5,9 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #2d3436;
+  color:rgba(0, 0, 0, 0.486);
+  color: White;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+canvas {
+  background-color: rgba(3, 3, 61, 0.339) !important;
 }
