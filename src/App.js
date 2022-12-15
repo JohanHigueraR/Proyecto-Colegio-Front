@@ -22,7 +22,7 @@ import Notas from "./Componentes/Notas";
 import EstudiantesSinCurso from "./Componentes/EstudiantesSinCurso";
 import RetirarEstudiante from "./Componentes/Retirar";
 
-const URL = "postgresql://postgres:hHDrP0Js1i0cOVnwb4s2@containers-us-west-158.railway.app:7207/railway"
+const URL = "https://colegio-enyoi-back.onrender.com"
 
 
 function App() {
