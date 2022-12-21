@@ -26,7 +26,7 @@ function Dashboard() {
   }
 
   const data = { 
-    labels: estudiantes.length> 0 ?[estudiantes[0].nombre_estudiante, estudiantes[1].nombre_estudiante, estudiantes[2].nombre_estudiante]:["entrando al else"],
+    labels: estudiantes.length> 0 ?[estudiantes[0].nombre_estudiante, estudiantes[1].nombre_estudiante, estudiantes[2].nombre_estudiante]:["Sin estudiantes activos"],
     datasets: [
       {
         label: "Promedio:",
