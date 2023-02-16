@@ -15,7 +15,10 @@
     "@testing-library/user-event": "^13.5.0",
     "chart.js": "^4.0.1",
     "dayjs": "^1.11.7",
+<<<<<<< HEAD
     "dotenv": "^16.0.3",
+=======
+>>>>>>> b754d4ab2c15008b3fab54500ca08345d8087dbc
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.0.1",

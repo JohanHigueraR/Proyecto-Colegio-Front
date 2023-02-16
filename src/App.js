@@ -22,10 +22,13 @@ import Notas from "./Componentes/Notas";
 import EstudiantesSinCurso from "./Componentes/EstudiantesSinCurso";
 import RetirarEstudiante from "./Componentes/Retirar";
 
+const URL = "https://colegio-enyoi-back.onrender.com"
+
+
 function App() {
   const [login, setLogin] = useState("");
   const ValidarLogin = async (type) => {
-    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/login`, {
+    const response = await fetch(URL+"/login", {
       method: "PUT",
       body: JSON.stringify(type),
       headers: { "Content-type": "application/json" },
@@ -34,6 +37,7 @@ function App() {
     setLogin(data);
     localStorage.setItem("validar", data);
   };
+  // prueba para agithub
 
 
   return (

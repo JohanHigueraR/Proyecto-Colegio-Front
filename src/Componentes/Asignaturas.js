@@ -12,16 +12,15 @@ function ListaAsignaturas() {
   const navigate = useNavigate();
   const [asignatura, setAsignatura] = useState([]);
   const cargarAsignatura = async () => {
-    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/asignaturas`);
+    const response = await fetch("http://localhost:4000/asignaturas");
     const data = await response.json();
     setAsignatura(data);
   };
   const archivarAsignatura = async (id) => {
-    //prueba para github
     const body = {
       id_asignatura: id,
     };
-    fetch(`${process.env.REACT_APP_SERVER_URL}/asignaturas`, {
+    fetch("http://localhost:4000/asignaturas", {
       method: "PUT",
       body: JSON.stringify(body),
       headers: { "Content-type": "application/json" },
