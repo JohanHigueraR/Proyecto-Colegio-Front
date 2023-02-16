@@ -14,19 +14,26 @@ Chart.defaults.color = "white";
 function Dashboard() {
   const [estudiantes, setEstudiantes] = useState([]);
   const cargarPromedio = async () => {
-    const response = await fetch("http://localhost:4000/dashboard/estudiantes");
-    const data = await response.json()
-    setEstudiantes(data)
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/dashboard/estudiantes`);
+    const data = await response.json();
+    setEstudiantes(data);
   };
-  useEffect(()=>{
-    cargarPromedio()
-  },)
-  const consoleLog = ()=>{
-    console.log(estudiantes)
-  }
+  useEffect(() => {
+    cargarPromedio();
+  });
+  const consoleLog = () => {
+    console.log(estudiantes);
+  };
 
-  const data = { 
-    labels: estudiantes.length> 0 ?[estudiantes[0].nombre_estudiante, estudiantes[1].nombre_estudiante, estudiantes[2].nombre_estudiante]:["entrando al else"],
+  const data = {
+    labels:
+      estudiantes.length > 0
+        ? [
+            estudiantes[0].nombre_estudiante,
+            estudiantes[1].nombre_estudiante,
+            estudiantes[2].nombre_estudiante,
+          ]
+        : ["Sin estudiantes activos"],
     datasets: [
       {
         label: "Promedio:",
@@ -35,7 +42,10 @@ function Dashboard() {
         pointBackgroundColor: "white",
         pointBorderColor: "white",
         borderWidth: 3,
-        data: estudiantes.length> 0 ?[estudiantes[0].trunc, estudiantes[1].trunc,estudiantes[2].trunc]:[10,5,4],
+        data:
+          estudiantes.length > 0
+            ? [estudiantes[0].trunc, estudiantes[1].trunc, estudiantes[2].trunc]
+            : [10, 5, 4],
       },
     ],
   };
@@ -65,7 +75,7 @@ function Dashboard() {
             borderRadius: "1%",
           }}
         >
-          <Typography variant="h5" onClick={()=>consoleLog()}>
+          <Typography variant="h5" onClick={() => consoleLog()}>
             <EmojiEventsIcon></EmojiEventsIcon> Mejores estudiantes por promedio{" "}
           </Typography>
           <Bar data={data} options={config}></Bar>

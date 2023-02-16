@@ -20,7 +20,7 @@ import {
    
     const cargarAsignatura = async () => {
       const response = await fetch(
-        "http://localhost:4000/notas/"+params.id
+        `${process.env.REACT_APP_SERVER_URL}/notas/${params.id}`
       );
       const data = await response.json();
       setAsignatura(data);
@@ -30,7 +30,7 @@ import {
       const body ={
         id_estudiante: id_estudiante
       } 
-      await fetch("http://localhost:4000/estudiantes/retirar",{
+      await fetch(`${process.env.REACT_APP_SERVER_URL}/estudiantes/retirar`,{
         method: 'PUT',
         body: JSON.stringify(body),
         headers: { "Content-Type": "application/json" },

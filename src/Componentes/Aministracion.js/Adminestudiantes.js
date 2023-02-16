@@ -55,7 +55,7 @@ function Adminestudiantes() {
     const body = {
       id_estudiante: selectedRow,
     };
-    await fetch("http://localhost:4000/administracion/estudiantes", {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/administracion/estudiantes`, {
       method: "PUT",
       body: JSON.stringify(body),
       headers: { "Content-type": "application/json" },
@@ -70,7 +70,7 @@ function Adminestudiantes() {
     const body = {
       id_estudiante: selectedRow,
     };
-    await fetch("http://localhost:4000/administracion/estudiantes", {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/administracion/estudiantes`, {
       method: "DELETE",
       body: JSON.stringify(body),
       headers: { "Content-type": "application/json" },
@@ -87,7 +87,7 @@ function Adminestudiantes() {
   const [estudiantes, setEstudiantes] = useState([]);
   const cargarEstudiantes = async () => {
     const response = await fetch(
-      "http://localhost:4000/administracion/estudiantes"
+      `${process.env.REACT_APP_SERVER_URL}/administracion/estudiantes`
     );
     const data = await response.json();
     data.map((dato) => (dato.id = dato.id_estudiante));

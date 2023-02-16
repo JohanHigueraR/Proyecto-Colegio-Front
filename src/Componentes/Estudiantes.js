@@ -42,7 +42,7 @@ export default function Estudiantes() {
 
   const [estudiantes, setEstudiantes] = useState([]);
   const cargarEstudiantes = async () => {
-    const response = await fetch("http://localhost:4000/estudiantes");
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/estudiantes`);
     const data = await response.json();
     data.map((dato)=>(
       dato.id = dato.id_estudiante

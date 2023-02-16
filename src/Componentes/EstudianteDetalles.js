@@ -29,7 +29,7 @@ function EstudianteDetalles() {
   ]);
   const cargarEstudiante = async (id) => {
     const response = await fetch(
-      "http://localhost:4000/estudiantes/" + id + "/detalles"
+      `${process.env.REACT_APP_SERVER_URL}/estudiantes/${id}/detalles`
     );
     const data = await response.json();
     setEstudiante(data);
@@ -37,7 +37,7 @@ function EstudianteDetalles() {
  
   const eliminarEstudiante = async(id) => {
     await fetch(
-        "http://localhost:4000/estudiantes/"+id+"/archivar",{
+      `${process.env.REACT_APP_SERVER_URL}/estudiantes/${id}/archivar`,{
             method:"PUT"
         }
     )
@@ -46,7 +46,7 @@ function EstudianteDetalles() {
   const [notas, setNotas] = useState([])
   const cargarNotas = async () => {
     const response = await fetch(
-      "http://localhost:4000/notas/cargar/estudiante/"+params.id
+      `${process.env.REACT_APP_SERVER_URL}/notas/cargar/estudiante/${params.id}`
     );
     const data = await response.json();
     setNotas(data);
@@ -54,7 +54,7 @@ function EstudianteDetalles() {
   const [promedio, setPromedio] = useState([])
   const cargarPromedio = async () => {
     const response = await fetch(
-      "http://localhost:4000/notas/promedio/estudiante/"+params.id
+      `${process.env.REACT_APP_SERVER_URL}/notas/promedio/estudiante/${params.id}`
     );
     const data = await response.json();
     setPromedio(data);
@@ -62,7 +62,7 @@ function EstudianteDetalles() {
   const [promedioGeneral, setPromedioGeneral] = useState([])
   const cargarPromedioGeneral =async () => {
     const response = await fetch(
-      "http://localhost:4000/notas/promedio/general/"+params.id
+      `${process.env.REACT_APP_SERVER_URL}/notas/promedio/general/${params.id}`
     );
     const data = await response.json();
     setPromedioGeneral(data);

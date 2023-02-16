@@ -6,7 +6,7 @@ function ListaCursos() {
   const navigate = useNavigate()
   const [cursos, setCursos] = useState([]);
   const cargarCursos = async () => {
-    const response = await fetch("http://localhost:4000/cursos");
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/cursos`);
     const data = await response.json();
     setCursos(data);
   };

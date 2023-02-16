@@ -25,7 +25,7 @@ import RetirarEstudiante from "./Componentes/Retirar";
 function App() {
   const [login, setLogin] = useState("");
   const ValidarLogin = async (type) => {
-    const response = await fetch("http://localhost:4000/login", {
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/login`, {
       method: "PUT",
       body: JSON.stringify(type),
       headers: { "Content-type": "application/json" },

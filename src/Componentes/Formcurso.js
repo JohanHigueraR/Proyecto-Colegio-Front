@@ -26,7 +26,7 @@ function Formcurso() {
     e.preventDefault();
     setLoading(true);
     if (editar) {
-        await fetch("http://localhost:4000/cursos/"+params.id+"/editarcurso", {
+        await fetch(`${process.env.REACT_APP_SERVER_URL}/cursos/${params.id}/editarcurso`, {
         method: "PUT",
         body: JSON.stringify(curso),
         headers: { "Content-type": "application/json" },
@@ -34,7 +34,7 @@ function Formcurso() {
       setLoading(false);
       navigate("/cursos");
     } else {
-        await fetch("http://localhost:4000/cursos/crearcurso", {
+        await fetch(`${process.env.REACT_APP_SERVER_URL}/cursos/crearcurso`, {
         method: "POST",
         body: JSON.stringify(curso),
         headers: { "Content-type": "application/json" },
@@ -46,7 +46,7 @@ function Formcurso() {
   };
   const cargarCurso = async (id) => {
     const response = await fetch(
-      "http://localhost:4000/cursos/" + id + "/detallescurso"
+      `${process.env.REACT_APP_SERVER_URL}/cursos/${id}/detallescurso`
     );
     const data = await response.json();
     setCurso({ nombre_curso: data.nombre_curso, director_curso: data.director_curso });

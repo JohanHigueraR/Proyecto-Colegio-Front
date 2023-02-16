@@ -13,7 +13,7 @@ import Alert from '@mui/material/Alert';
 function Admincursos() {
   const [cursos, setCursos] = useState([]);
   const cargarCursos = async () => {
-    const response = await fetch("http://localhost:4000/administracion/cursos");
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/administracion/cursos`);
     const data = await response.json();
     setCursos(data);
   };
@@ -24,7 +24,7 @@ function Admincursos() {
     const body = {
       id_curso: id
     }
-    await fetch("http://localhost:4000/administracion/cursos", {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/administracion/cursos`, {
       method: "PUT",
       body: JSON.stringify(body),
       headers: { "Content-type": "application/json" },
@@ -34,7 +34,7 @@ function Admincursos() {
     const body = {
       id_curso: id
     }
-    await fetch("http://localhost:4000/cursos/10/eliminar",{
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/cursos/10/eliminar`,{
       method: "DELETE",
       body: JSON.stringify(body),
       headers: { "Content-type": "application/json" },

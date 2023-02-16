@@ -21,7 +21,7 @@ function FormAsignarMaterias() {
     },
   ]);
   const cargarAsignatura = async () => {
-    const response = await fetch("http://localhost:4000/asignaturas");
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/asignaturas`);
     const data = await response.json();
     setAsignatura(data);
   };
@@ -34,9 +34,7 @@ function FormAsignarMaterias() {
     active.map(
       async (asignatura) =>
         await fetch(
-          "http://localhost:4000/cursos/" +
-            params.id +
-            "/detallescurso/asignarmaterias",
+          `${process.env.REACT_APP_SERVER_URL}/cursos/${params.id}/detallescurso/asignarmaterias`,
           {
             method: "POST",
             body: JSON.stringify(asignatura),

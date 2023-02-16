@@ -12,7 +12,7 @@ function ListaAsignaturas() {
   const navigate = useNavigate();
   const [asignatura, setAsignatura] = useState([]);
   const cargarAsignatura = async () => {
-    const response = await fetch("http://localhost:4000/asignaturas");
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/asignaturas`);
     const data = await response.json();
     setAsignatura(data);
   };
@@ -20,7 +20,7 @@ function ListaAsignaturas() {
     const body = {
       id_asignatura: id,
     };
-    fetch("http://localhost:4000/asignaturas", {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/asignaturas`, {
       method: "PUT",
       body: JSON.stringify(body),
       headers: { "Content-type": "application/json" },

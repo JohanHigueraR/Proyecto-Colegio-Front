@@ -15,7 +15,7 @@ function Adminasignaturas() {
   const [asignatura, setAsignatura] = useState([]);
   const cargarAsignatura = async () => {
     const response = await fetch(
-      "http://localhost:4000/administracion/asignaturas"
+      `${process.env.REACT_APP_SERVER_URL}/administracion/asignaturas`
     );
     const data = await response.json();
     setAsignatura(data);
@@ -27,7 +27,7 @@ function Adminasignaturas() {
     const body = {
       id_asignatura: id,
     };
-    await fetch("http://localhost:4000/administracion/asignaturas", {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/administracion/asignaturas`, {
       method: "DELETE",
       body: JSON.stringify(body),
       headers: { "Content-type": "application/json" },
@@ -37,7 +37,7 @@ function Adminasignaturas() {
     const body = {
       id_asignatura: id,
     };
-    await fetch("http://localhost:4000/administracion/asignaturas", {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/administracion/asignaturas`, {
       method: "PUT",
       body: JSON.stringify(body),
       headers: { "Content-type": "application/json" },

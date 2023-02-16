@@ -23,9 +23,7 @@ function Notas() {
   ]);
   const cargarAsignatura = async () => {
     const response = await fetch(
-      "http://localhost:4000/cursos/" +
-        params.id +
-        "/detallescurso/asignarmaterias/delete"
+      `${process.env.REACT_APP_SERVER_URL}/cursos/${params.id}/detallescurso/asignarmaterias/delete`
     );
     const data = await response.json();
     data.map((dato) => {
@@ -39,7 +37,7 @@ function Notas() {
 
   const cargarEstudiante = async () => {
     const response = await fetch(
-      "http://localhost:4000/notas/" + params.id + ""
+      `${process.env.REACT_APP_SERVER_URL}/notas/${params.id}`
     );
     const data = await response.json();
     setEstudiantes(data);
@@ -48,7 +46,7 @@ function Notas() {
   const [notas, setNotas] = useState([]);
   const cargarNotas = async () => {
     const response = await fetch(
-      "http://localhost:4000/notas/cargar/" + params.asignatura
+      `${process.env.REACT_APP_SERVER_URL}/notas/cargar/${params.asignatura}`
     );
     const data = await response.json();
     setNotas(data);
@@ -56,7 +54,7 @@ function Notas() {
   const [promedio, setPromedio] = useState([]);
   const cargarPromedio = async () => {
     const response = await fetch(
-      "http://localhost:4000/notas/promedio/" + params.asignatura
+      `${process.env.REACT_APP_SERVER_URL}/notas/promedio/${params.asignatura}`
     );
     const data = await response.json();
     setPromedio(data);

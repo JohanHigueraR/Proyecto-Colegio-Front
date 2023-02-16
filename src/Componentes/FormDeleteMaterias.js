@@ -20,9 +20,7 @@ function FormAsignarMaterias() {
  
   const cargarAsignatura = async () => {
     const response = await fetch(
-      "http://localhost:4000/cursos/" +
-        params.id +
-        "/detallescurso/asignarmaterias/delete"
+      `${process.env.REACT_APP_SERVER_URL}/cursos/${params.id}/detallescurso/asignarmaterias/delete`
     );
     const data = await response.json();
     setAsignatura(data);
@@ -32,9 +30,7 @@ function FormAsignarMaterias() {
     const body ={
       id_asignatura: id_asignatura
     } 
-    await fetch("http://localhost:4000/cursos/" +
-    params.id +
-    "/detallescurso/asignarmaterias/delete",{
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/cursos/${params.id}/detallescurso/asignarmaterias/delete`,{
       method: 'DELETE',
       body: JSON.stringify(body),
       headers: { "Content-Type": "application/json" },

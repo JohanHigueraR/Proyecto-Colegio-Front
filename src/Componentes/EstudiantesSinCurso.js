@@ -50,7 +50,7 @@ function EstudiantesSinCurso() {
     const body = {
       id_estudiante: selectedRow,
     };
-    await fetch("http://localhost:4000/estudiantes/sincurso/" + params.id, {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/estudiantes/sincurso/${params.id}`, {
       method: "PUT",
       body: JSON.stringify(body),
       headers: { "Content-type": "application/json" },
@@ -65,7 +65,7 @@ function EstudiantesSinCurso() {
 
   const [estudiantes, setEstudiantes] = useState([]);
   const cargarEstudiantesSinCurso = async () => {
-    const response = await fetch("http://localhost:4000/estudiantes/sinCurso");
+    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/estudiantes/sinCurso`);
     const data = await response.json();
     data.map((dato) => (dato.id = dato.id_estudiante));
     setEstudiantes(data);
@@ -77,7 +77,7 @@ function EstudiantesSinCurso() {
   const [curso, setCurso] = useState([]);
   const cargarCurso = async (id) => {
     const response = await fetch(
-      "http://localhost:4000/cursos/" + id + "/detallescurso"
+      `${process.env.REACT_APP_SERVER_URL}/cursos/${id}/detallescurso`
     );
     const data = await response.json();
     setCurso(data);

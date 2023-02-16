@@ -45,7 +45,7 @@ export default function ModalNotas({ children }) {
     if (nota.valor_nota === "") {
       body.valor_nota = valor_nota;
     }
-    await fetch("http://localhost:4000/notas", {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/notas`, {
       method: "PUT",
       body: JSON.stringify(body),
       headers: { "Content-type": "application/json" },
@@ -60,7 +60,7 @@ export default function ModalNotas({ children }) {
     var body={
       id_nota: id_nota
     }
-    await fetch("http://localhost:4000/notas", {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/notas`, {
       method: "DELETE",
       body: JSON.stringify(body),
       headers: { "Content-type": "application/json" },
@@ -68,7 +68,7 @@ export default function ModalNotas({ children }) {
     handleClose();
   };
   const crearNota = async () => {
-    await fetch("http://localhost:4000/notas", {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/notas`, {
       method: "POST",
       body: JSON.stringify(nota),
       headers: { "Content-type": "application/json" },

@@ -19,7 +19,7 @@ function CursoEspecifico() {
   const [curso, setCurso] = useState([]);
   const cargarCurso = async (id) => {
     const response = await fetch(
-      "http://localhost:4000/cursos/" + id + "/detallescurso"
+      `${process.env.REACT_APP_SERVER_URL}/cursos/${id}/detallescurso`
     );
     const data = await response.json();
     setCurso(data);
@@ -30,7 +30,7 @@ function CursoEspecifico() {
     }
   }, [params.id]);
   const eliminarCurso = async (id) => {
-    await fetch("http://localhost:4000/cursos/" + id + "/eliminar", {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/${id}/eliminar`, {
       method: "PUT",
     });
     navigate("/cursos");
@@ -45,9 +45,7 @@ function CursoEspecifico() {
 
   const cargarAsignatura = async () => {
     const response = await fetch(
-      "http://localhost:4000/cursos/" +
-        params.id +
-        "/detallescurso/asignarmaterias/delete"
+      `${process.env.REACT_APP_SERVER_URL}/cursos/${params.id}/detallescurso/asignarmaterias/delete`
     );
     const data = await response.json();
     setAsignatura(data);

@@ -26,7 +26,7 @@ function FormCrearAsignatura() {
       e.preventDefault();
       setLoading(true);
       if (editar) {
-          await fetch("http://localhost:4000/asignaturas/"+params.id+"/crearasignatura", {
+          await fetch(`${process.env.REACT_APP_SERVER_URL}/asignaturas/${params.id}/crearasignatura`, {
           method: "PUT",
           body: JSON.stringify(asignatura),
           headers: { "Content-type": "application/json" },
@@ -34,7 +34,7 @@ function FormCrearAsignatura() {
         setLoading(false);
         navigate("/asignaturas");
       } else {
-          await fetch("http://localhost:4000/asignaturas/crearasignatura", {
+          await fetch(`${process.env.REACT_APP_SERVER_URL}/asignaturas/crearasignatura`, {
           method: "POST",
           body: JSON.stringify(asignatura),
           headers: { "Content-type": "application/json" },
@@ -46,7 +46,7 @@ function FormCrearAsignatura() {
     };
     const cargarAsignatura = async (id) => {
       const response = await fetch(
-        "http://localhost:4000/asignaturas/" + id + "/crearasignatura"
+        `${process.env.REACT_APP_SERVER_URL}/asignaturas/${id}/crearasignatura`
       );
       const data = await response.json();
       setAsignatura({ nombre_asignatura: data.nombre_asignatura });

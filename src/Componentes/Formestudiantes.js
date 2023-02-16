@@ -16,7 +16,7 @@ function FormEstudiante() {
   const [cursos, setCursos] = useState([]);
   const cargarCursos = async () => {
     const response = await fetch(
-      "http://localhost:4000/estudiantes/asignarcurso"
+      `${process.env.REACT_APP_SERVER_URL}/estudiantes/asignarcurso`
     );
     const data = await response.json();
     setCursos(data);
@@ -48,7 +48,7 @@ function FormEstudiante() {
     setLoading(true);
     if (editar) {
       await fetch(
-        "http://localhost:4000/estudiantes/" + params.id + "/editar",
+        `${process.env.REACT_APP_SERVER_URL}/estudiantes/${params.id}/editar`,
         {
           method: "PUT",
           body: JSON.stringify(estudiante),
@@ -58,7 +58,7 @@ function FormEstudiante() {
       setLoading(false);
       navigate("/estudiantes");
     } else {
-      await fetch("http://localhost:4000/estudiantes", {
+      await fetch(`${process.env.REACT_APP_SERVER_URL}/estudiantes`, {
         method: "POST",
         body: JSON.stringify(estudiante),
         headers: { "Content-type": "application/json" },
@@ -77,7 +77,7 @@ function FormEstudiante() {
   ]);
   const cargarCurso = async (id) => {
     const response = await fetch(
-      "http://localhost:4000/estudiantes/" + id + "/detalles"
+      `${process.env.REACT_APP_SERVER_URL}/estudiantes/${id}/detalles`
     );
     const data = await response.json();
     setStudent(data);
