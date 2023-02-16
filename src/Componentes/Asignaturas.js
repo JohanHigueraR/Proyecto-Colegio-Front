@@ -17,6 +17,7 @@ function ListaAsignaturas() {
     setAsignatura(data);
   };
   const archivarAsignatura = async (id) => {
+    //prueba para github
     const body = {
       id_asignatura: id,
     };
