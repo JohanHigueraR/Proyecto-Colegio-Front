@@ -27,6 +27,14 @@
 .App-link {
   color: #61dafb;
 }
+#cardLogin {
+  display: flex;
+  background-color: #2196f3;
+  color: white !important;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -36,3 +44,4 @@
     transform: rotate(360deg);
   }
 }
+

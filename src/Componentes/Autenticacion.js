@@ -12,9 +12,8 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState} from "react";
-
-
+import { useState } from "react";
+import { Card, CardContent } from "@mui/material";
 
 function Copyright(props) {
   return (
@@ -34,30 +33,27 @@ function Copyright(props) {
   );
 }
 const theme = createTheme();
-export function Autenticacion({validarLogin, login}) {
-  
-  localStorage.setItem('validar','false')
+export function Autenticacion({ validarLogin, login }) {
+  localStorage.setItem("validar", "false");
   const [loginType, setLoginType] = useState({
     nombre_usuario: "",
     contraseña_usuario: "",
   });
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    validarLogin(loginType)
-    setError(true)
+    event.preventDefault();
+    validarLogin(loginType);
+    setError(true);
   };
-  const verificar = ()=>{
-    if(login){
-      
-    }else{
-      
+  const verificar = () => {
+    if (login) {
+    } else {
     }
-  }
+  };
   const handleChange = (event) => {
     setLoginType({ ...loginType, [event.target.name]: event.target.value });
   };
-  
+
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
@@ -88,6 +84,26 @@ export function Autenticacion({validarLogin, login}) {
               alignItems: "center",
             }}
           >
+            <Card id="cardLogin">
+              <CardContent sx={{ width: "100%", backgroundColor: 'blueviolet'}}>
+                <Typography
+                  sx={{ fontSize: 20, fontWeight: "bolder" }}
+                  color="white"
+                  gutterBottom
+                >
+                  Nota del desarrollador
+                </Typography>
+                {/* <Typography sx={{ mb: 1.5 }} color="white">
+              Usuario para pruebas:
+            </Typography> */}
+                <Typography
+                color="white">
+                  Usuario: admin
+                  <br />
+                  Contraseña: admin123
+                </Typography>
+              </CardContent>
+            </Card>
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
               <LockOutlinedIcon />
             </Avatar>
@@ -111,7 +127,6 @@ export function Autenticacion({validarLogin, login}) {
                 autoFocus
                 onChange={handleChange}
                 error={error}
-                
               />
               <TextField
                 margin="normal"
@@ -124,9 +139,8 @@ export function Autenticacion({validarLogin, login}) {
                 autoComplete="current-password"
                 onChange={handleChange}
                 error={error}
-                
               />
-              
+
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
